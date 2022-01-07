@@ -15,8 +15,8 @@ function App() {
         settext(value);
     }
 
-    function cutout(event) {
-        let name = parseInt(event.target.name);
+    function cutout(index) {
+        let name = index;
         list.splice(name, 1);
         console.log(list);
         setlist([...list]);
@@ -24,8 +24,8 @@ function App() {
 
     function additem(event) {
         if (text !== "") {
-          
-            setlist([...list,text]);
+
+            setlist([...list, text]);
             console.log(list);
             settext("");
         }
@@ -63,7 +63,11 @@ function App() {
                         obj
                     } < /span> < button className = { classo }
                     name = { index.toString() }
-                    onClick = { cutout } > < FontAwesomeIcon icon = { faTimesCircle }
+                    onClick = {
+                        () => {
+                            cutout({ index });
+                        }
+                    } > < FontAwesomeIcon icon = { faTimesCircle }
                     style = {
                         { fontSize: "20px" }
                     }
